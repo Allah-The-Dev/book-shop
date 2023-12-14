@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class BookService {
 
     public List<Book> allBooks() {
-        return List.of(new Book("java", "Herb"));
+        return List.of(new Book("java", "Herbert"));
     }
 
 }
