@@ -7,8 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
     public List<Book> allBooks() {
-        return List.of(new Book("java", "Herbert"));
+        return bookRepository.findAll()
+                .stream()
+                .map(bookEntity -> new Book(bookEntity.getName(), bookEntity.getAuthor()))
+                .toList();
     }
 
 }
