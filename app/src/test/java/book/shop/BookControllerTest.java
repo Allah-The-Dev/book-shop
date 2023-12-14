@@ -26,7 +26,7 @@ public class BookControllerTest {
     void shouldGetNoBooksIfNotAvailableAny() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/books"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json("[]"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.books").isEmpty());
     }
 
     @Test
@@ -38,8 +38,8 @@ public class BookControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/books"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("java"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].author").value("Herbert"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.books[0].name").value("java"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.books[0].author").value("Herbert"));
 
         Mockito.verify(bookService, Mockito.times(1)).allBooks();
     }

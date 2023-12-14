@@ -1,8 +1,8 @@
 package book.shop;
 
-import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -15,7 +15,7 @@ public class BookController {
     }
 
     @GetMapping("books")
-    public List<Book> books(BookService bookService) {
-        return this.bookService.allBooks();
+    public ResponseEntity<Books> books() {
+        return ResponseEntity.ok(new Books(bookService.allBooks()));
     }
 }
