@@ -1,6 +1,7 @@
 package book.shop;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,9 @@ public class BookService {
     }
 
     public BookResponse save(Book book) {
-        return null;
+        String uuid = UUID.randomUUID().toString();
+        BookEntity bookEntity = bookRepository.save(new BookEntity(uuid, book.name(), book.author()));
+        return new BookResponse(bookEntity.getId(), bookEntity.getName(), bookEntity.getAuthor());
     }
 
 }
