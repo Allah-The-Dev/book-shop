@@ -20,4 +20,8 @@ public class BookService {
                 .toList();
     }
 
+    public BookResponse save(Book book) {
+        return null;
+    }
+
 }
