@@ -1,5 +1,10 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.dependency.packagePresentation": "flat",
+    "java.trace.server": "verbose",
+    "java.project.sourcePaths": [
+        "app/src/main/java/book/shop"
+    ]
 }

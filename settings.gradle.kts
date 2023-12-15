@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "book-shop"
-include("app")
