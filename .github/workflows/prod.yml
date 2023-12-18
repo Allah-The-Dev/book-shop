@@ -1,4 +1,4 @@
-name: QA
+name: Prod
 
 on:
   workflow_run:
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  deploy-to-prod:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Prod deployment"
