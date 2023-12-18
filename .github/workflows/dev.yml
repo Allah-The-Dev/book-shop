@@ -32,6 +32,10 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: test
+    - name: Code coverage
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: jacocoTestCoverageVerification
   
   integration-test:
     needs: unit-test
