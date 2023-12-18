@@ -1,15 +1,9 @@
 plugins {
-    // application
     id("java")
     id("io.spring.dependency-management") version "1.1.4"
     id("org.springframework.boot") version "3.1.5"
     id("org.flywaydb.flyway") version "9.22.3"
 }
-
-// application {
-//     // Define the main class for the application.
-//     mainClass.set("book.shop.BookShopApplication")
-// }
 
 group = "book.shop"
 version = "0.0.1"
