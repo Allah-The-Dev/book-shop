@@ -1,0 +1,16 @@
+name: QA
+
+on:
+  workflow_run:
+    workflows: ["Dev"]
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Prod deployment"
