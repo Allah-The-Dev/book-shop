@@ -39,7 +39,7 @@ public class BookControllerTest {
     @Test
     void shouldGetBooksIfAvailable() throws Exception {
 
-        Book book = new Book("01234X", "Java book", "Book description",
+        Book book = new Book(1L,"01234X", "Java book", "Book description",
                 "Amar", 2023, "imageUrl/img.img",
                 "largeImageUrl.img", 100.55F, 1, 4.5F);
 

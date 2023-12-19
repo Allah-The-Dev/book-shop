@@ -16,26 +16,25 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 public class BookServiceTest {
 
 
-
     @Test
     public void shouldReturnBookListFromDB() {
 
-       BookRepository bookRepository = Mockito.mock(BookRepository.class);
+        BookRepository bookRepository = Mockito.mock(BookRepository.class);
 
         BookService bookService = new BookService(bookRepository);
 
-        BookEntity bookEntity = new BookEntity("01234X", "Java Book", "Book description",
+        BookEntity bookEntity = new BookEntity(1L, "01234X", "Java Book", "Book description",
                 "Book author", 2023, "imageurl/img.img",
                 "largeImageurl.img", 100.55F, 1, 4.5F);
 
-        BookEntity bookEntity2 = new BookEntity("01235X", "TDD Book", "AMAR book",
+        BookEntity bookEntity2 = new BookEntity(2L, "01235X", "TDD Book", "AMAR book",
                 "Amar", 2022, "imageurl/img.img",
                 "largeImageurl.img", 105.55F, 2, 5.0F);
 
-        Book book = new Book("01234X", "Java Book", "Book description",
+        Book book = new Book(1L, "01234X", "Java Book", "Book description",
                 "Book author", 2023, "imageurl/img.img",
                 "largeImageurl.img", 100.55F, 1, 4.5F);
-        Book book2 = new Book("01235X", "TDD Book", "AMAR book",
+        Book book2 = new Book(2L, "01235X", "TDD Book", "AMAR book",
                 "Amar", 2022, "imageurl/img.img",
                 "largeImageurl.img", 105.55F, 2, 5.0F);
 
@@ -52,7 +51,7 @@ public class BookServiceTest {
         assertTrue("true", expectedResponse.size() == actualResponse.size()
                 && expectedResponse.containsAll(actualResponse));
 
-        Mockito.verify(bookRepository,Mockito.times(1)).findAll();
+        Mockito.verify(bookRepository, Mockito.times(1)).findAll();
 
     }
 

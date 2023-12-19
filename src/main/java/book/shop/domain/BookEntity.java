@@ -7,7 +7,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "book")
 public class BookEntity {
+
+
     @Id
+    private Long bookId;
     private String isbn;
     private String bookName;
 
@@ -110,8 +113,10 @@ public class BookEntity {
     public BookEntity() {
     }
 
-    public BookEntity(String isbn, String bookName, String description, String author,
-                      Integer publicationYear, String smallImageUrl, String largeImageUrl, float price, Integer numberOfAvailableBooks, float rating) {
+    public BookEntity(Long bookId, String isbn, String bookName, String description, String author,
+                      Integer publicationYear, String smallImageUrl, String largeImageUrl, float price,
+                      Integer numberOfAvailableBooks, float rating) {
+        this.bookId = bookId;
         this.isbn = isbn;
         this.bookName = bookName;
         this.description = description;
@@ -122,5 +127,13 @@ public class BookEntity {
         this.price = price;
         this.numberOfAvailableBooks = numberOfAvailableBooks;
         this.rating = rating;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 }
