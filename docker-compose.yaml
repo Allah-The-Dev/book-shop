@@ -1,6 +1,6 @@
 version: '2'
 services:
-  book-demo-service:
+  book-demo:
     image:
       book-shop
     ports:
