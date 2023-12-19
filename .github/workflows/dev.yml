@@ -18,9 +18,7 @@ permissions:
 
 jobs:
   unit-test:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -32,13 +30,25 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: test
+
+  code-coverage:
+    needs: unit-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
     - name: Code coverage
       uses: gradle/gradle-build-action@v2
       with:
         arguments: jacocoTestCoverageVerification
+
   
   integration-test:
-    needs: unit-test
+    needs: code-coverage
     runs-on: ubuntu-latest
     steps:
     - run: echo "integration test"
@@ -47,4 +57,4 @@ jobs:
     needs: integration-test
     runs-on: ubuntu-latest
     steps:
-    - run: echo "integration-test"
+    - run: echo "deploy-to-dev"
