@@ -1,8 +1,5 @@
-package book.shop;
+package book.shop.books;
 
-import book.shop.controller.BookController;
-import book.shop.domain.Book;
-import book.shop.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

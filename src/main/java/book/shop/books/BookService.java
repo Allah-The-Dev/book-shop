@@ -1,8 +1,5 @@
-package book.shop.service;
+package book.shop.books;
 
-import book.shop.domain.Book;
-import book.shop.domain.BookEntity;
-import book.shop.repository.BookRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.slf4j.Logger;
@@ -18,7 +15,7 @@ import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 
 @Service
-public class BookService {
+class BookService {
 
     private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 

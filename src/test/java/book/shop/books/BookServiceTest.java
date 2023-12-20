@@ -1,9 +1,5 @@
-package book.shop;
+package book.shop.books;
 
-import book.shop.domain.Book;
-import book.shop.domain.BookEntity;
-import book.shop.repository.BookRepository;
-import book.shop.service.BookService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
