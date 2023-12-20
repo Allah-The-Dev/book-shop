@@ -19,7 +19,7 @@ import java.io.IOException;
 @RestController
 public class BookController {
 
-    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+    //private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private final BookService bookService;
 
@@ -34,7 +34,7 @@ public class BookController {
 
     @PostMapping("/books")
     public ResponseEntity<String> loadBooks(@RequestParam("file") MultipartFile booksCSVFile) throws IOException, CsvException {
-        logger.info("Incoming stream controller ==== "+booksCSVFile.getInputStream());
+        //logger.info("Incoming stream controller ==== "+booksCSVFile.getInputStream());
 
         if(bookService.saveBooks(booksCSVFile.getInputStream())){
             return ResponseEntity.ok("Loaded Succesfully "+booksCSVFile.getOriginalFilename());
