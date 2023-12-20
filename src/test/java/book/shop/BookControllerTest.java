@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -62,7 +63,7 @@ public class BookControllerTest {
 
         MockMultipartFile file = new MockMultipartFile(
                 "file", "test.csv", "text/csv", "1,John Doe,25".getBytes());
-        when(bookService.saveBooks(Mockito.any())).thenReturn(true);
+        when(bookService.saveOrUpdateBooks(Mockito.any())).thenReturn(true);
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/books")
                         .file(file))
@@ -75,28 +76,46 @@ public class BookControllerTest {
     public void returnsSuccesfulWhenServiceReturnsTrue() throws Exception {
         MockMultipartFile file = new MockMultipartFile(
                 "file", "test.csv", "text/csv", "1,John Doe,25".getBytes());
-        when(bookService.saveBooks(Mockito.any())).thenReturn(true);
+        when(bookService.saveOrUpdateBooks(Mockito.any())).thenReturn(true);
         mockMvc.perform(MockMvcRequestBuilders.multipart("/books")
                         .file(file))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Loaded Succesfully test.csv"))
                 .andDo(print());
 
-        Mockito.verify(bookService, Mockito.times(1)).saveBooks(Mockito.any());
+        Mockito.verify(bookService, Mockito.times(1)).saveOrUpdateBooks(Mockito.any());
     }
 
     @Test
     public void returnsInternalServerErrorWhenServiceReturnsFalse() throws Exception {
         MockMultipartFile file = new MockMultipartFile(
                 "file", "test.csv", "text/csv", "1,John Doe,25".getBytes());
-        when(bookService.saveBooks(Mockito.any())).thenReturn(false);
+        when(bookService.saveOrUpdateBooks(Mockito.any())).thenReturn(false);
         mockMvc.perform(MockMvcRequestBuilders.multipart("/books")
                         .file(file))
                 .andExpect(MockMvcResultMatchers.status().isInternalServerError())
                 .andExpect(MockMvcResultMatchers.content().string("Error"))
                 .andDo(print());
 
-        Mockito.verify(bookService, Mockito.times(1)).saveBooks(Mockito.any());
+        Mockito.verify(bookService, Mockito.times(1)).saveOrUpdateBooks(Mockito.any());
     }
+
+//    @Test
+//    public void testCsvFileUpload() throws Exception {
+//
+//        String filePath = "src/test/java/resources/file.csv";
+//        byte[] csvFileBytes = Files.readAllBytes(Paths.get(filePath));
+//        MockMultipartFile multipartFile = new MockMultipartFile("file", "file.csv", "text/csv", csvFileBytes);
+//
+//        when(bookService.saveBooks(Mockito.any())).thenReturn(false);
+//        mockMvc.perform(MockMvcRequestBuilders.multipart("/books")
+//                        .file(multipartFile))
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andDo(print());
+//
+//        assertEquals("file.csv", multipartFile.getOriginalFilename());
+//        assertEquals("text/csv", multipartFile.getContentType());
+//
+//    }
 
 }

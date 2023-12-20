@@ -23,8 +23,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation ("com.opencsv:opencsv:4.1")
-//    implementation ("org.slf4j:slf4j-api:1.7.25")
-//    implementation ("ch.qos.logback:logback-classic:1.4.14")
 }
 
 tasks.test {

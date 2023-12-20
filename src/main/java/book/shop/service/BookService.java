@@ -1,20 +1,22 @@
 package book.shop.service;
 
-import book.shop.controller.BookController;
 import book.shop.domain.Book;
 import book.shop.domain.BookEntity;
 import book.shop.repository.BookRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
@@ -41,7 +43,7 @@ public class BookService {
     }
 
     public List<BookEntity> parseCsv(InputStream inputStream) throws IOException, CsvException {
-        try (CSVReader reader = new CSVReader(new InputStreamReader(inputStream))) {
+        try (CSVReader reader = new CSVReader(new InputStreamReader(inputStream),';')) {
             List<String[]> csvData = reader.readAll();
 
             return convertCsvDataToObjects(csvData);
@@ -68,7 +70,7 @@ public class BookService {
                 .toList();
     }
 
-    public boolean saveBooks(InputStream inputStream) throws IOException, CsvException {
+    public boolean saveOrUpdateBooks(InputStream inputStream) throws IOException, CsvException {
         logger.info("Incoming stream service ==== "+inputStream);
         List<BookEntity> bookList = parseCsv(inputStream);
         return !bookRepository.saveAll(bookList).isEmpty();
