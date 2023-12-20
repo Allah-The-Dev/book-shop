@@ -5,18 +5,14 @@ import book.shop.domain.BookEntity;
 import book.shop.repository.BookRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
