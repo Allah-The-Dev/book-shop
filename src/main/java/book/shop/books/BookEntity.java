@@ -140,4 +140,21 @@ class BookEntity {
     public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
+
+    @Override
+    public String toString() {
+        return "BookEntity{" +
+                "bookId=" + bookId +
+                ", isbn='" + isbn + '\'' +
+                ", bookName='" + bookName + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", smallImageUrl='" + smallImageUrl + '\'' +
+                ", largeImageUrl='" + largeImageUrl + '\'' +
+                ", price=" + price +
+                ", numberOfAvailableBooks=" + numberOfAvailableBooks +
+                ", rating=" + rating +
+                '}';
+    }
 }

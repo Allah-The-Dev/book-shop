@@ -15,8 +15,6 @@ import java.io.IOException;
 @RestController
 public class BookController {
 
-    //private static final Logger logger = LoggerFactory.getLogger(BookController.class);
-
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -24,20 +22,21 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<Books> getAllBooks() {
-     return ResponseEntity.ok(new Books(bookService.allBooks()));
+    public ResponseEntity<Books> search(@RequestParam(name = "search", required = false) String searchParam) {
+        return ResponseEntity.ok(new Books(bookService.findBooks(searchParam)));
     }
 
+
     @PostMapping("/books")
-    public ResponseEntity<String> loadBooks(@RequestParam("file") MultipartFile booksCSVFile) throws IOException, CsvException {
+    public ResponseEntity<String> loadBooks(@RequestParam("file") MultipartFile booksCSVFile) throws IOException,
+            CsvException {
         try {
             if (bookService.saveOrUpdateBooks(booksCSVFile.getInputStream())) {
-                return ResponseEntity.ok("Loaded Succesfully " + booksCSVFile.getOriginalFilename());
+                return ResponseEntity.ok("Loaded Successfully " + booksCSVFile.getOriginalFilename());
             }
             return ResponseEntity.internalServerError().body("Error");
-        }
-        catch(Exception e){
-            return ResponseEntity.internalServerError().body("Error occurred "+e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error occurred " + e.getMessage());
         }
     }
 }

@@ -19,6 +19,7 @@ dependencies {
     implementation("com.h2database:h2:2.1.210")
     implementation("org.flywaydb:flyway-core:9.22.3")
     implementation("org.postgresql:postgresql:42.7.0")
+    implementation("org.modelmapper:modelmapper:3.2.0")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -2,6 +2,6 @@ package book.shop.books;
 
 import java.util.List;
 
-record Books(List<Book> books) {
+public record Books(List<Book> books) {
 
 }
