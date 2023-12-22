@@ -5,6 +5,7 @@ import book.shop.orders.dto.OrderDetailsRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class OrderController {
 
