@@ -1,4 +1,4 @@
-package book.shop.orders;
+package book.shop.orders.repository;
 
 
 import jakarta.persistence.*;
@@ -61,13 +61,13 @@ public class OrdersEntity {
         this.totalAmount = totalAmount;
     }
 
-    public Timestamp getCreatedOn() {
-        return createdOn;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedOn(Timestamp createdOn) {
-        this.createdOn = createdOn;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
-    private Timestamp createdOn;
+    private Timestamp createdAt;
 }

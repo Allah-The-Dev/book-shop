@@ -1,4 +1,4 @@
-package book.shop.orders;
+package book.shop.orders.repository;
 
 
 import jakarta.persistence.*;
@@ -14,7 +14,11 @@ public class OrderItemEntity {
 
     private UUID orderId;
 
-    private UUID bookId;
+    private long bookId;
+
+    private int quantity;
+
+    private float price;
 
     public UUID getOrderItemId() {
         return orderItemId;
@@ -32,11 +36,11 @@ public class OrderItemEntity {
         this.orderId = orderId;
     }
 
-    public UUID getBookId() {
+    public long getBookId() {
         return bookId;
     }
 
-    public void setBookId(UUID bookId) {
+    public void setBookId(long bookId) {
         this.bookId = bookId;
     }
 
@@ -56,7 +60,5 @@ public class OrderItemEntity {
         this.price = price;
     }
 
-    private int quantity;
 
-    private float price;
 }

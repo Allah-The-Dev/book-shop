@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "4cb70551-b37b-4ab0-bcf6-8cd2d4cf6e63",
+		"name": "bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"Banglore\",\n    \"userId\": \"3e9b9b38-0e6d-4e7b-b582-2f6a19f6b03d\",\n    \"paymentMode\": \"COD\",\n    \"totalAmount\": 200.5,\n    \"orderItemsList\": [\n        {\n            \"bookId\": \"222\",\n            \"quantity\": 2,\n            \"price\": 23.5\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
