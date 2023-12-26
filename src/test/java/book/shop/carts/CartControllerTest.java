@@ -1,7 +1,5 @@
 package book.shop.carts;
 
-import book.shop.books.BookController;
-import book.shop.carts.models.CartRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,7 +9,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.swing.text.html.CSS;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
@@ -42,11 +39,6 @@ public class CartControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userId")
                         .value(userId.toString())); // Ensure userId is a String in JSON
-    }
-
-
-    private CartRequest getCartRequest() {
-        return new CartRequest(new UUID(1L, 1L));
     }
 
     public static Cart getCartResponse() {

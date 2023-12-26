@@ -1,9 +1,5 @@
 package book.shop.carts;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;

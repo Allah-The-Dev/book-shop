@@ -1,7 +1,5 @@
 package book.shop.carts;
 
-
-import book.shop.books.Books;
 import book.shop.carts.models.CartRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

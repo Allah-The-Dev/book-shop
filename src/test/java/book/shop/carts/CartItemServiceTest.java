@@ -9,7 +9,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class CartItemServiceTest {
